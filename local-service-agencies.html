@@ -7,10 +7,28 @@
 <link rel="stylesheet" href="assets/style.css">
 <link rel="canonical" href="https://monstersportskorea-afk.github.io/leadflow-stack/local-service-agencies.html">
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B76J5MX75J"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': 500
+  });
+  try {
+    const savedConsent = localStorage.getItem('leadflow_consent');
+    if (savedConsent === 'analytics') {
+      gtag('consent', 'update', {'analytics_storage':'granted','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'});
+    } else if (savedConsent === 'reject') {
+      gtag('consent', 'update', {'analytics_storage':'denied','ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied'});
+    }
+  } catch(err) {}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B76J5MX75J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
   gtag('js', new Date());
   gtag('config', 'G-B76J5MX75J');
 </script>
@@ -55,6 +73,14 @@
 <footer class="footer">
   <div>LeadFlow Stack — an experimental buyer-guide project operated by The Glow Step.</div>
   <div>This site provides general software-comparison information, not legal, telecom, privacy, or compliance advice. SMS/phone rules vary by country and use case.</div>
+  <a class="cookie-settings" href="#cookie-settings" data-cookie-settings>Cookie settings</a>
 </footer>
+</div>
+<div class="consent-banner" data-consent-banner hidden role="dialog" aria-labelledby="consent-title">
+  <p id="consent-title">We use analytics cookies to understand how this site is used. You can accept analytics cookies or continue with non-essential storage disabled.</p>
+  <div class="consent-actions">
+    <button class="consent-accept" type="button" data-consent-accept>Accept analytics</button>
+    <button class="consent-reject" type="button" data-consent-reject>Reject non-essential</button>
+  </div>
 </div>
 </body></html>
